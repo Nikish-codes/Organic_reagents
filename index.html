@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JEE Organic Reactions</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="discord-button.css">
+    <!-- MathJax with mhchem extension -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                packages: {'[+]': ['mhchem']},
+                processEscapes: true,
+                // Increase maximum macro substitution level
+                maxMacros: 1000,
+                // Increase maximum buffer size
+                maxBuffer: 10*1024
+            },
+            options: {
+                enableMenu: false,
+                processHtmlClass: 'chemical-formula',
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            },
+            loader: {
+                load: ['[tex]/mhchem']
+            },
+            messageStyle: 'none', // Hide error messages on the page
+            errorSettings: {
+                style: {display: 'none'}, // Hide error styles
+                message: [''], // Empty error message
+                messageId: '' // No message ID
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <!-- Simple targeted error handling script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Give MathJax time to initialize
+            setTimeout(function() {
+                // Function to hide error messages
+                function hideErrors() {
+                    // Hide specific error elements
+                    document.querySelectorAll('.mjx-error, mjx-merror, .MathJax_Error').forEach(function(el) {
+                        if (el) {
+                            el.style.display = 'none';
+                            el.style.visibility = 'hidden';
+                        }
+                    });
+                    
+                    // Hide elements with error text
+                    document.querySelectorAll('*').forEach(function(el) {
+                        if (el.textContent && (
+                            el.textContent.includes('Extra close brace') || 
+                            el.textContent.includes('missing open brace') ||
+                            el.textContent.includes('math processing error')
+                        )) {
+                            // Only hide if it's a text-only element (not containing other elements)
+                            if (el.children.length === 0) {
+                                el.style.display = 'none';
+                            }
+                        }
+                    });
+                }
+                
+                // Hide errors initially
+                hideErrors();
+                
+                // Set up a simple observer to catch new errors
+                const observer = new MutationObserver(function(mutations) {
+                    hideErrors();
+                });
+                
+                // Start observing
+                observer.observe(document.body, {
+                    childList: true,
+                    subtree: true
+                });
+                
+                // Periodic check to catch any missed errors
+                setInterval(hideErrors, 1000);
+            }, 500);
+        });
+    </script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <div>
+                    <i class="bi bi-flask-fill"></i> JEE Organic Reactions
+                    <div class="creator-text">By Grafite</div>
+                </div>
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#" data-filter="all">
+                            <i class="bi bi-grid-3x3-gap"></i> All Reactions
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-filter="bookmarks">
+                            <i class="bi bi-bookmark-star"></i> Bookmarks
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="bi bi-book"></i> Chapters
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#" data-filter="Hydrocarbons">Hydrocarbons</a></li>
+                            <li><a class="dropdown-item" href="#" data-filter="Haloalkanes and Haloarenes">Haloalkanes and Haloarenes</a></li>
+                            <li><a class="dropdown-item" href="#" data-filter="Alcohols, Phenols and Ethers">Alcohols, Phenols and Ethers</a></li>
+                            <li><a class="dropdown-item" href="#" data-filter="Aldehydes, Ketones and Carboxylic Acids">Aldehydes, Ketones and Carboxylic Acids</a></li>
+                            <li><a class="dropdown-item" href="#" data-filter="Organic Compounds Containing Nitrogen">Organic Compounds Containing Nitrogen</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <div class="search-wrapper me-2">
+                        <i class="bi bi-search search-icon"></i>
+                        <input class="form-control" type="search" placeholder="Search reactions..." id="searchInput">
+                    </div>
+                    <a href="https://discord.gg/k6uzz2CTdN" target="_blank" class="btn btn-discord me-2">
+                        <i class="bi bi-discord"></i> Find any bugs?
+                    </a>
+                    <button class="btn btn-outline-light me-2" id="toggleView">
+                        <i class="bi bi-grid"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="stats-bar">
+                    <div class="stat-item">
+                        <i class="bi bi-lightning-charge"></i>
+                        <span id="totalReactions">0</span> Reactions
+                    </div>
+                    <div class="stat-item">
+                        <i class="bi bi-bookmark-check"></i>
+                        <span id="bookmarkedReactions">0</span> Bookmarked
+                    </div>
+                    <div class="stat-item">
+                        <i class="bi bi-check-circle"></i>
+                        <span id="masteredReactions">0</span> Mastered
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="loadingSpinner" class="text-center my-5 d-none">
+            <div class="loading-spinner"></div>
+        </div>
+
+        <div class="row" id="reactionsGrid">
+            <!-- Reactions will be dynamically inserted here -->
+        </div>
+    </div>
+
+    <!-- Reaction Modal -->
+    <div class="modal fade" id="reactionModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Reaction Details</h5>
+                    <div class="ms-auto">
+                        <button class="btn btn-outline-light btn-sm me-2" id="modalBookmark">
+                            <i class="bi bi-bookmark"></i>
+                        </button>
+                        <button class="btn btn-outline-light btn-sm me-2" id="modalMastered">
+                            <i class="bi bi-check-circle"></i>
+                        </button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <!-- Reaction details will be dynamically inserted here -->
+                </div>
+                <div class="fixed-modal-footer">
+                    <button type="button" class="btn btn-primary" id="prevReaction">← Previous</button>
+                    <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="nextReaction">Next →</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="reactions.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

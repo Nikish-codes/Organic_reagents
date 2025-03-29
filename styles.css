@@ -1,0 +1,755 @@
+/* Custom styles for the organic reactions website */
+
+/* General styles */
+:root {
+    --dark-bg: #1a1a1a;
+    --darker-bg: #121212;
+    --card-bg: #242424;
+    --text-primary: #ffffff;
+    --text-secondary: #b3b3b3;
+    --accent-color: #7c4dff;
+    --accent-hover: #651fff;
+    --danger-color: #ff4444;
+    --success-color: #00C851;
+}
+
+body {
+    background-color: var(--dark-bg);
+    color: var(--text-primary);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 16px;
+}
+
+/* Navbar styling */
+.navbar {
+    background-color: var(--darker-bg) !important;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.navbar-brand {
+    color: var(--accent-color) !important;
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+.creator-text {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    font-weight: 400;
+    line-height: 1;
+    margin-top: -5px;
+}
+
+.nav-link {
+    color: var(--text-secondary) !important;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+    padding: 8px 16px !important;
+    margin: 0 4px;
+    font-size: 1.1rem;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: var(--text-primary) !important;
+    background-color: rgba(124, 77, 255, 0.1);
+}
+
+/* Dropdown styles */
+.dropdown-menu {
+    background-color: var(--darker-bg);
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.dropdown-item {
+    color: var(--text-secondary);
+    transition: all 0.2s ease;
+    padding: 0.6rem 1.5rem;
+    font-size: 1.1rem;
+}
+
+.dropdown-item:hover, .dropdown-item:focus {
+    background-color: rgba(124, 77, 255, 0.1);
+    color: var(--text-primary);
+}
+
+/* Card styles */
+.reaction-card {
+    background-color: var(--card-bg);
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    height: 100%;
+}
+
+.reaction-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    border-color: var(--accent-color);
+}
+
+.reaction-card .card-header {
+    background-color: rgba(124, 77, 255, 0.1);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding: 1rem;
+    position: relative;
+}
+
+.reaction-card .card-body {
+    padding: 1.25rem;
+}
+
+.card-title {
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+}
+
+/* Chemical formula styling */
+.chemical-formula {
+    font-family: 'Times New Roman', serif;
+    color: var(--text-primary);
+    background-color: rgba(124, 77, 255, 0.05);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-top: 0.75rem;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    overflow: hidden;
+    position: relative;
+    min-height: 60px;
+}
+
+/* MathJax styling */
+.chemical-formula .MathJax {
+    margin: 1rem auto !important;
+}
+
+.chemical-formula .mjx-chtml {
+    margin: 0.75rem 0;
+    text-align: center !important;
+    display: flex;
+    justify-content: center;
+    white-space: nowrap;
+}
+
+/* Fix for long equations */
+.chemical-formula .mjx-math {
+    max-width: 100%;
+    overflow: hidden;
+    padding-bottom: 5px;
+}
+
+.chemical-formula strong {
+    color: var(--accent-color);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.chemical-formula em {
+    color: var(--text-secondary);
+    display: block;
+    margin-top: 1rem;
+    font-size: 0.95rem;
+}
+
+/* Search wrapper styling */
+.search-wrapper {
+    position: relative;
+    flex: 1;
+}
+
+.search-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-secondary);
+    z-index: 10;
+}
+
+#searchInput {
+    background-color: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: var(--text-primary);
+    border-radius: 20px;
+    padding: 0.75rem 1.25rem 0.75rem 2.5rem;
+    font-size: 1.1rem;
+}
+
+#searchInput:focus {
+    background-color: rgba(255,255,255,0.15);
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 2px rgba(124, 77, 255, 0.25);
+}
+
+#searchInput::placeholder {
+    color: var(--text-secondary);
+}
+
+/* Stats bar styling */
+.stats-bar {
+    display: flex;
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    padding: 1rem;
+    justify-content: space-around;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    color: var(--text-primary);
+}
+
+.stat-item i {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--accent-color);
+}
+
+.stat-item span {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+}
+
+/* View toggle button */
+#toggleView {
+    background-color: rgba(255,255,255,0.1);
+    border: none;
+    color: var(--text-primary);
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    font-size: 1.25rem;
+}
+
+#toggleView:hover {
+    background-color: var(--accent-color);
+}
+
+/* Modal styling */
+.modal-dialog {
+    max-width: 95%;
+    width: 95%;
+    height: 95vh;
+    margin: 10px auto;
+}
+
+.modal-content {
+    background-color: var(--card-bg);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.modal-header {
+    background-color: var(--darker-bg);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px 16px 0 0;
+    padding: 0.75rem 1.5rem;
+    flex-shrink: 0;
+    min-height: auto;
+    height: auto; /* Changed from fixed height to auto */
+    display: flex;
+    align-items: center;
+}
+
+.modal-body {
+    padding: 1.5rem;
+    overflow-y: auto;
+    flex-grow: 1;
+    height: auto; /* Changed from calc to auto to ensure proper scrolling */
+    max-height: none;
+}
+
+.modal-title {
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 1.4rem;
+}
+
+/* Modal buttons styling */
+.modal-header .btn {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin-left: 8px;
+}
+
+.modal-header .btn i {
+    font-size: 1.1rem;
+}
+
+/* Ensure bookmark and complete buttons are visible */
+.modal-header .ms-auto {
+    display: flex;
+    align-items: center;
+}
+
+.modal-footer {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding: 1rem 1.25rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.fixed-modal-footer {
+    height: auto; /* Changed from fixed height to auto */
+    min-height: 70px; /* Added min-height instead of fixed height */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    padding: 0.75rem 1.5rem;
+    flex-shrink: 0;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    background-color: var(--card-bg);
+    border-radius: 0 0 16px 16px;
+    z-index: 5;
+}
+
+.fixed-modal-footer button {
+    width: 130px;
+    position: relative;
+    text-align: center;
+    flex-shrink: 0;
+    font-size: 1rem;
+    padding: 0.5rem 0.75rem;
+}
+
+/* Ensure navigation buttons are more prominent */
+#prevReaction, #nextReaction {
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+#prevReaction:hover, #nextReaction:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+}
+
+.keyboard-shortcut-help {
+    color: var(--text-secondary);
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 15px;
+    margin-top: 20px;
+    font-size: 0.9rem;
+}
+
+.btn-primary {
+    background-color: var(--accent-color);
+    border: none;
+    font-size: 1rem;
+    padding: 0.5rem 1.25rem;
+}
+
+.btn-primary:hover {
+    background-color: var(--accent-hover);
+}
+
+.btn-outline-light {
+    border-color: rgba(255,255,255,0.2);
+    font-size: 1rem;
+    padding: 0.5rem 1.25rem;
+}
+
+.btn-outline-light:hover {
+    background-color: rgba(255,255,255,0.1);
+    color: var(--text-primary);
+}
+
+/* Chapter badge styling */
+.chapter-badge {
+    background-color: var(--accent-color) !important;
+    color: white;
+    font-weight: 500;
+    padding: 0.4rem 0.75rem;
+    border-radius: 16px;
+    font-size: 0.8rem;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    display: inline-block;
+}
+
+/* Reaction mechanism styling */
+.mechanism-step {
+    background-color: rgba(124, 77, 255, 0.1);
+    border: 1px solid rgba(124, 77, 255, 0.2);
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+}
+
+/* Memory tip styling */
+.memory-tip {
+    background-color: rgba(0, 200, 81, 0.1);
+    border-left: 4px solid var(--success-color);
+    padding: 1.25rem;
+    margin: 1.5rem 0;
+    border-radius: 0 8px 8px 0;
+}
+
+/* Loading animation */
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 3px solid rgba(124, 77, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: var(--accent-color);
+    animation: spin 1s linear infinite;
+    margin: 2.5rem auto;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Difficulty badge */
+.difficulty {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-right: 0.5rem;
+}
+
+.difficulty-easy { background-color: rgba(0, 200, 81, 0.2); color: #00C851; }
+.difficulty-medium { background-color: rgba(255, 187, 51, 0.2); color: #ffbb33; }
+.difficulty-hard { background-color: rgba(255, 68, 68, 0.2); color: #ff4444; }
+
+/* Bookmark button */
+.bookmark-btn {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 5;
+    font-size: 1.1rem;
+    padding: 0;
+}
+
+.bookmark-btn:hover, .bookmark-btn.active {
+    color: var(--accent-color);
+}
+
+/* Animation for card transitions */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.reaction-card {
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .navbar-nav {
+        margin-bottom: 1rem;
+    }
+    
+    .search-wrapper {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+    
+    .d-flex.align-items-center {
+        flex-direction: column;
+        align-items: stretch !important;
+    }
+    
+    #toggleView {
+        align-self: flex-end;
+        margin-bottom: 0.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .reaction-card {
+        margin-bottom: 1rem;
+    }
+    
+    .stats-bar {
+        flex-direction: column;
+    }
+    
+    .stat-item {
+        margin-bottom: 0.5rem;
+    }
+    
+    /* Modal adjustments for mobile */
+    .modal-dialog {
+        margin: 5px auto;
+        height: 98vh;
+    }
+    
+    .modal-header {
+        padding: 0.5rem 1rem;
+        flex-wrap: wrap;
+    }
+    
+    .modal-header .ms-auto {
+        display: flex;
+        align-items: center;
+        margin-left: 0 !important;
+        margin-top: 0.5rem;
+        width: 100%;
+        justify-content: flex-end;
+    }
+    
+    .modal-title {
+        font-size: 1.2rem;
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+    
+    .fixed-modal-footer button {
+        width: auto;
+        padding: 0.5rem;
+        font-size: 0.9rem;
+    }
+    
+    /* Ensure modal body is scrollable on mobile */
+    .modal-body {
+        -webkit-overflow-scrolling: touch;
+        max-height: calc(100vh - 130px); /* Account for header and footer */
+        overflow-y: auto;
+        padding-bottom: 2rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .col-md-4 {
+        width: 50%;
+    }
+    
+    .chapter-badge {
+        font-size: 0.7rem;
+        padding: 0.3rem 0.6rem;
+    }
+    
+    .card-title {
+        font-size: 1rem;
+    }
+    
+    .chemical-formula {
+        font-size: 0.9rem;
+    }
+}
+
+.keyboard-info {
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+    background-color: rgba(255,255,255,0.1);
+    padding: 2px 8px;
+    border-radius: 4px;
+    vertical-align: middle;
+    display: inline-block;
+    margin-left: 8px;
+}
+
+.keyboard-info i {
+    font-size: 0.8rem;
+    vertical-align: text-top;
+}
+
+/* Make reaction details content larger in the modal */
+.reaction-details {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+
+.reaction-title {
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: var(--accent-color);
+    font-weight: 700;
+}
+
+.modal-body .chemical-formula {
+    overflow-x: auto;
+    padding: 2rem;
+    font-size: 1.5rem;
+    text-align: center;
+    margin: 0 auto 1.5rem;
+    max-width: 100%;
+    background-color: rgba(124, 77, 255, 0.08);
+    border-radius: 12px;
+    flex-grow: 1;
+    min-height: 100px;
+}
+
+.modal-body .chemical-formula .mjx-math {
+    overflow-x: auto;
+    transform: scale(1.3);
+    transform-origin: center;
+    margin: 1.5rem auto;
+    min-height: 40px;
+}
+
+.modal-body .chemical-formula .MathJax_Error {
+    display: none !important;
+}
+
+.modal-body .d-flex.justify-content-between {
+    margin-bottom: 1rem;
+}
+
+/* Compound names styling */
+.compound-names {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 1rem;
+}
+
+.compound-name {
+    background-color: rgba(124, 77, 255, 0.1);
+    color: var(--text-primary);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-size: 1rem;
+    text-align: center;
+    border: 1px solid rgba(124, 77, 255, 0.3);
+}
+
+/* Enhanced responsive styles */
+@media (max-width: 992px) {
+    .reaction-title {
+        font-size: 1.8rem;
+    }
+    
+    .modal-body .chemical-formula {
+        font-size: 1.3rem;
+        padding: 1.5rem;
+    }
+    
+    .modal-body .chemical-formula .mjx-math {
+        transform: scale(1.1);
+    }
+}
+
+@media (max-width: 768px) {
+    .modal-dialog {
+        max-width: 100%;
+        width: 100%;
+        height: 100vh;
+        margin: 0;
+        border-radius: 0;
+    }
+    
+    .modal-content {
+        border-radius: 0;
+        max-height: 100vh;
+        overflow: hidden;
+    }
+    
+    .modal-header {
+        border-radius: 0;
+    }
+    
+    .fixed-modal-footer {
+        border-radius: 0;
+    }
+    
+    .reaction-title {
+        font-size: 1.5rem;
+    }
+    
+    .modal-body {
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        max-height: calc(100vh - 120px); /* Subtract header and footer heights */
+        padding: 1rem;
+    }
+    
+    .modal-body .chemical-formula {
+        font-size: 1.1rem;
+        padding: 1rem;
+        overflow-y: visible;
+    }
+    
+    .modal-body .chemical-formula .mjx-math {
+        transform: scale(1);
+    }
+    
+    .compound-name {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
+    }
+}
+
+/* Add these important error hiding rules - only target actual errors */
+.mjx-error,
+mjx-merror,
+.MathJax_Error {
+    display: none !important;
+    visibility: hidden !important;
+}
+
+/* Error message placeholder style */
+.formula-error-placeholder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    width: 100%;
+    font-style: italic;
+    color: var(--text-secondary);
+}
+
+/* Hide only error message elements */
+.modal-body .chemical-formula mjx-merror,
+.modal-body .chemical-formula .MathJax_Error,
+.modal-body .chemical-formula .mjx-error {
+    display: none !important;
+    visibility: hidden !important;
+}
+
+/* Specific error text hiding */
+.mjx-mtext[data-mjx-texclass="ERROR"] {
+    display: none !important;
+}
+
+/* Target elements with red text color (typical for MathJax errors) */
+.mjx-math span[style*="color:red"],
+.mjx-math div[style*="color:red"] {
+    display: none !important;
+}
+
+/* Hide element with yellow background (typical for MathJax errors) */
+[style*="background-color: yellow"] {
+    background-color: transparent !important;
+    color: inherit !important;
+}
